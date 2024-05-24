@@ -1,6 +1,11 @@
 ## the imports ##
 import streamlit as st
 import ollama
+import subprocess
+
+result = subprocess.Popen(['ollama', 'pull', 'phi3'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+result = subprocess.Popen(['ollama', 'pull', 'nomic-embed-text'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+stdout, stderr = result.communicate()
 
 ## the title
 st.title("♿ ALL Wheelchair Chatbot")
