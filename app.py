@@ -1,6 +1,21 @@
 ## the imports ##
 import streamlit as st
 import ollama
+import subprocess
+
+def run_custom_command(command):
+    result = subprocess.run(command.split(), capture_output=True)
+    if result.returncode == 0:
+        return result.stdout.decode()
+    else:
+        return result.stderr.decode()
+
+st.title("Custom Command Execution")
+
+command = st.text_input("Enter Command:")
+if st.button("Run Command"):
+    output = run_custom_command(command)
+    st.text_area("Output:", value=output, height=200)
 
 ## the title
 st.title("♿ ALL Wheelchair Chatbot")
