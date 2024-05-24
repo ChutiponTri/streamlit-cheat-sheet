@@ -18,7 +18,7 @@ for msg in st.session_state.messages:
 
 ## Configure the model to use (in our case, the Phi-3)
 def generate_response():
-    response = ollama.chat(model='phi3', stream=True, messages=st.session_state.messages)
+    response = ollama.chat(model='llama3', stream=True, messages=st.session_state.messages)
     for partial_resp in response:
         token = partial_resp["message"]["content"]
         st.session_state["full_message"] += token
